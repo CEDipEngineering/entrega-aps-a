@@ -21,7 +21,6 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
     private JCheckBox[] checkBoxes;
     private Switch[] switches;
     //    Atributos adicionais
-    private Color color;
     private Image image;
     private Light light;
 
@@ -30,7 +29,7 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
 
         super(WIDTH, HEIGHT);
 
-        this.light = new Light(255, 0, 0);
+        this.light = new Light(255, 0, 0, 0,0,0);
         switches = new Switch[gate.getInputSize()];
         checkBoxes = new JCheckBox[gate.getInputSize()];
 
@@ -48,7 +47,6 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
         }
 
         this.light.connect(0, gate);
-        color = light.getColor();
 
 
         String name = gate.toString() + ".png";
@@ -72,7 +70,6 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
 //                System.out.println("Switch at " + i + " off");
             }
         }
-        color = light.getColor();
         repaint();
     }
 
@@ -86,7 +83,7 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
     public void mouseClicked(MouseEvent event) {
         int x = event.getX();
         int y = event.getY();
-        int ovalXCenter = (WIDTH / 2) + 125;
+        int ovalXCenter = (WIDTH / 2) + 135;
         int ovalYCenter = HEIGHT / 2;
 
 //        System.out.println("X:" + x);
@@ -96,7 +93,7 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
 //        Usando a funcao distanceSquared, que retorna o quadrado da distancia, determina se o clique foi dentro do circulo
         int distSq = distanceSquared(x, y, ovalXCenter, ovalYCenter);
         if (distSq <= ovalRadius * ovalRadius / 4) {
-            light.setColor(JColorChooser.showDialog(this, null, color));
+            light.setColor(JColorChooser.showDialog(this, null, light.getColor()));
             update();
         }
     }
@@ -127,7 +124,7 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
         imgSize[1] = 58*3;
 
         g.drawImage(image, WIDTH / 2 - imgSize[0] / 2, HEIGHT / 2 - imgSize[1] / 2, imgSize[0], imgSize[1], this);
-        g.setColor(color);
+        g.setColor(light.getColor());
         g.fillOval(WIDTH / 2 - ovalRadius / 2 + imgSize[0] / 2, HEIGHT / 2 - ovalRadius / 2, ovalRadius, ovalRadius);
         getToolkit().sync();
     }

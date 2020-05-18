@@ -5,9 +5,11 @@ import java.awt.*;
 public class Light implements Receiver {
     private Color color;
     private Emitter emitter;
+    private Color offColor;
 
-    public Light(int r, int g, int b) {
+    public Light(int r, int g, int b, int rOff, int gOff, int bOff) {
         color = new Color(r, g, b);
+        offColor = new Color(rOff, gOff, bOff);
         emitter = null;
     }
 
@@ -15,11 +17,16 @@ public class Light implements Receiver {
         if (emitter != null && emitter.read()) {
             return color;
         }
-        return Color.BLACK;
+        return offColor;
     }
 
     public void setColor(Color color) {
-        this.color = color;
+        if (emitter != null && emitter.read()) {
+            this.color = color;
+            return;
+        }
+        this.offColor = color;
+        return;
     }
 
     @Override
