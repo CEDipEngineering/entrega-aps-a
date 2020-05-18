@@ -29,7 +29,7 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
 
         super(WIDTH, HEIGHT);
 
-        this.light = new Light(255, 0, 0, 0,0,0);
+        this.light = new Light(255, 0, 0, 0, 0, 0);
         switches = new Switch[gate.getInputSize()];
         checkBoxes = new JCheckBox[gate.getInputSize()];
 
@@ -120,8 +120,8 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
 
 //        Vetor de dimensoes da imagem [x (largura), y (altura)]
         int[] imgSize = new int[2];
-        imgSize[0] = 90*3;
-        imgSize[1] = 58*3;
+        imgSize[0] = 90 * 3;
+        imgSize[1] = 58 * 3;
 
         g.drawImage(image, WIDTH / 2 - imgSize[0] / 2, HEIGHT / 2 - imgSize[1] / 2, imgSize[0], imgSize[1], this);
         g.setColor(light.getColor());

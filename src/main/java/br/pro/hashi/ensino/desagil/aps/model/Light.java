@@ -26,7 +26,6 @@ public class Light implements Receiver {
             return;
         }
         this.offColor = color;
-        return;
     }
 
     @Override

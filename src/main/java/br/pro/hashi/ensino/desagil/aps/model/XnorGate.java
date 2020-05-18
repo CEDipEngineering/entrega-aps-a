@@ -4,7 +4,6 @@ public class XnorGate extends Gate {
     private final NandGate Nand1;
     private final NandGate Nand2;
     private final NandGate Nand3;
-    private final NandGate Nand4;
     private final NandGate Nand5;
 
 
@@ -13,19 +12,19 @@ public class XnorGate extends Gate {
         Nand1 = new NandGate();
         Nand2 = new NandGate();
         Nand3 = new NandGate();
-        Nand4 = new NandGate();
+        NandGate nand4 = new NandGate();
         Nand5 = new NandGate();
 
 
         // Logica
         Nand2.connect(1, Nand1);
         Nand3.connect(0, Nand1);
-        Nand4.connect(0, Nand2);
-        Nand4.connect(1, Nand3);
+        nand4.connect(0, Nand2);
+        nand4.connect(1, Nand3);
 
         // Negando
-        Nand5.connect(0, Nand4);
-        Nand5.connect(1, Nand4);
+        Nand5.connect(0, nand4);
+        Nand5.connect(1, nand4);
     }
 
 
