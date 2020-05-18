@@ -16,10 +16,16 @@ public class XnorGate extends Gate {
         Nand4 = new NandGate();
         Nand5 = new NandGate();
 
+
+        // Logica
         Nand2.connect(1, Nand1);
+        Nand3.connect(0, Nand1);
+        Nand4.connect(0, Nand2);
         Nand4.connect(1, Nand3);
-        Nand5.connect(1, Nand2);
+
+        // Negando
         Nand5.connect(0, Nand4);
+        Nand5.connect(1, Nand4);
     }
 
 
@@ -35,12 +41,10 @@ public class XnorGate extends Gate {
         }
         if (inputIndex == 0) {
             Nand1.connect(0, emitter);
-            Nand1.connect(1, emitter);
-            Nand4.connect(0, emitter);
-        } else {
-            Nand3.connect(0, emitter);
-            Nand3.connect(1, emitter);
             Nand2.connect(0, emitter);
+        } else {
+            Nand1.connect(1, emitter);
+            Nand3.connect(1, emitter);
         }
     }
 }
