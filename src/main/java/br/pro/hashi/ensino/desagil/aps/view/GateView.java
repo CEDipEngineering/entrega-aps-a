@@ -123,8 +123,8 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
 
 //        Vetor de dimensoes da imagem [x (largura), y (altura)]
         int[] imgSize = new int[2];
-        imgSize[0] = 250;
-        imgSize[1] = 100;
+        imgSize[0] = 90*3;
+        imgSize[1] = 58*3;
 
         g.drawImage(image, WIDTH / 2 - imgSize[0] / 2, HEIGHT / 2 - imgSize[1] / 2, imgSize[0], imgSize[1], this);
         g.setColor(color);
